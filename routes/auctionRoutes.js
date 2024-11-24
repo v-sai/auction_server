@@ -16,7 +16,7 @@ router.get("/players", async (req, res) => {
 
 router.get("/auction/players", async (req, res) => {
   try {
-    const players = await Auction.find();
+    const players = await Auction.find().sort({ _id: -1 });
     res.json(players);
   } catch (error) {
     res.status(500).json({ message: "Error fetching players", error });
